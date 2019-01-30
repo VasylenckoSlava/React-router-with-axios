@@ -8,6 +8,7 @@ class Posts extends Component {
         posts: [],
     };
     componentDidMount () {
+        console.log(this.props);
         axios.get( '/posts' )
             .then( response => {
                 const posts = response.data.slice(0, 4);
@@ -36,6 +37,7 @@ class Posts extends Component {
                     key={post.id}
                     title={post.title}
                     author={post.author}
+                    {...this.props}
                     clicked={() => this.postSelectedHandler(post.id)} />;
             });
         }
